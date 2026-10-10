@@ -13,12 +13,16 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          flutter-version: '3.24.5'
       - name: Generate Android platform if missing
         run: |
           if [ ! -d android ]; then
             flutter create --org com.bwhs --project-name bwreels .
           fi
       - run: flutter pub get
+      - name: Patch ProGuard issue
+        run: |
+          find ~/.pub-cache -path '*/flutter_inappwebview_android*/build.gradle' -exec sed -i "s/proguard-android.txt/proguard-android-optimize.txt/g" {} \; || true
       - run: flutter build apk --release
       - uses: actions/upload-artifact@v4
         with:
