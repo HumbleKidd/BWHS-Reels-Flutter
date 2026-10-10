@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/reel_item.dart';
 import '../services/tmdb_service.dart';
 import 'player_screen.dart';
